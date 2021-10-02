@@ -1,0 +1,48 @@
+{
+  "name": "mostarnakt-redirect-to-new-site",
+  "version": "1.0.0",
+  "description": "Redirect to new web presentation of Moštárna Klatovy",
+  "main": "index.html",
+  "scripts": {
+    "html-build": "posthtml -c posthtml.json",
+    "html-build-dev": "posthtml -c posthtml-dev.json",
+    "html-watch": "onchange src/html -- npm run html-build",
+    "html-watch-dev": "onchange src/html -- npm run html-build-dev",
+    "jscr-build": "babel src/jscr --out-dir _dist/jscr",
+    "jscr-watch": "onchange src/jscr -- npm run jscr-build",
+    "php-build": "copyfiles -f src/php/*.php _dist",
+    "php-watch": "onchange src/php -- npm run php-build",
+    "seo-build": "copyfiles -f src/seo/* _dist",
+    "seo-watch": "onchange src/seo -- npm run seo-build",
+    "build": "run-p html-build jscr-build php-build seo-build",
+    "build-dev": "run-p html-build-dev jscr-build php-build seo-build",
+    "serve": "http-server _dist -c-1",
+    "start": "npm run build && run-p serve html-watch jscr-watch php-watch seo-watch",
+    "start-dev": "npm run build-dev && run-p serve html-watch-dev jscr-watch php-watch seo-watch",
+    "ftp": "node src/scripts/deploy.js",
+    "deploy": "npm run build && npm run ftp"
+  },
+  "keywords": [
+    "Moštárna",
+    "Klatovy",
+    "klatovská",
+    "moštárna",
+    "moštování"
+  ],
+  "author": "Jiří Ulrich <jjulrichovi@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-es2015-ie": "^6.7.0",
+    "copyfiles": "^2.4.1",
+    "dotenv": "^10.0.0",
+    "ftp-deploy": "^2.4.1",
+    "htmlnano": "^1.1.1",
+    "http-server": "^13.0.2",
+    "npm-run-all": "^4.1.5",
+    "onchange": "^7.1.0",
+    "posthtml": "^0.16.5",
+    "posthtml-cli": "^0.10.0"
+  }
+}

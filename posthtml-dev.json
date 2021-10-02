@@ -1,0 +1,6 @@
+{
+    "input": "src/html/*.html",
+    "output": "_dist",
+    "plugins": {
+    }
+}
