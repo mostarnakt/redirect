@@ -15,7 +15,7 @@
     "seo-build": "copyfiles -f src/seo/* _dist",
     "seo-watch": "onchange src/seo -- npm run seo-build",
     "stat-build": "copyfiles -f src/stat/* _dist",
-    "stat-watch": "onchange src/stat -- npm run stat-build",	
+    "stat-watch": "onchange src/stat -- npm run stat-build",
     "build": "run-p html-build jscr-build php-build seo-build stat-build",
     "build-dev": "run-p html-build-dev jscr-build php-build seo-build stat-build",
     "serve": "http-server _dist -c-1",
