@@ -1,1 +1,1 @@
-<?php header('Location: https://mostarnakt.web.app/', true, 301); ?>
+<?php header('Location: https://www.zahradkari.cz/zo/klatovy/', true, 301); ?>
